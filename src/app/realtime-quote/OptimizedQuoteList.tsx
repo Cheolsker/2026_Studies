@@ -51,19 +51,12 @@ export function OptimizedQuoteList() {
 
     // rAF 루프: 새 데이터가 있을 때만 setState
     const tick = () => {
-      // console.group(`raf Tick ${renderCount.current}|${rafRef.current}`);
-      // console.log(pendingRef.current);
-      
       if (pendingRef.current !== null) {
         setQuoteOutput(pendingRef.current);
         pendingRef.current = null;
       }
 
-      // console.log(`current frame scheduled: ${renderCount.current}|${rafRef.current}`);
       rafRef.current = requestAnimationFrame(tick);
-      
-      // console.log(`next frame scheduled: ${renderCount.current}|${rafRef.current}`);
-      // console.groupEnd();
     };
     rafRef.current = requestAnimationFrame(tick);
 
@@ -79,8 +72,6 @@ export function OptimizedQuoteList() {
   }, []);
 
   const elapsed = Date.now() - startTimeRef.current;
-
-  console.log(elapsed);
 
   if (elapsed >= 10000 || elapsed >= 30000 || elapsed >= 60000) {
     console.log(`elapsed: ${elapsed}ms, renders: ${renderCount.current}`);
