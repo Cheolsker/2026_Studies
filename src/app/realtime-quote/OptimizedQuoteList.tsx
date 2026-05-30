@@ -74,8 +74,6 @@ export function OptimizedQuoteList() {
   const elapsed = Date.now() - startTimeRef.current;
 
   if (elapsed >= 10000 || elapsed >= 30000 || elapsed >= 60000) {
-    console.log(`elapsed: ${elapsed}ms, renders: ${renderCount.current}`);
-    
     const closedElapsed = Math.floor(elapsed / 10000) * 10000;
 
     if (elapsed % 10000 >= 0 && !resultRef.current[closedElapsed]) {
